@@ -1,0 +1,11 @@
+library(dplyr)
+library(forecast)
+library(fpp)
+souvenir <- read.csv("souvenir.csv")
+souvenir
+souvenir_ts <- ts(souvenir, frequency = 12, start = c(1987, 1))
+plot(souvenir_ts)
+auto.arima(souvenir_ts)
+arima_fit <- arima(souvenir_ts, order = c(2,0,0), seasonal = c(1,1,0))
+arima_future <- forecast:::forecast.Arima(arima_fit, h = 48)
+plot(arima_future)
