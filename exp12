@@ -1,0 +1,13 @@
+mcars=mtcars[,c("mpg","disp","hp","wt")]
+print(head(mcars))
+model=lm(mpg~disp+hp+wt,data=mcars)
+print(model)
+a=coef(model)[1]
+xdisp=coef(model)[2]
+xhp=coef(model)[3]
+xwt=coef(model)[4]
+print(a)
+print(xdisp)
+print(xhp)
+print(xwt)
+plot(model)
